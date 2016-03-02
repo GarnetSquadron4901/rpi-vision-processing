@@ -2,7 +2,7 @@
 
 # Get dependacies
 echo "Installing dependancies..."
-sudo apt-get install htop scons cmake libjpeg8-dev python3 python-pip oracle-java8-jdk
+sudo apt-get install htop scons cmake libjpeg8-dev python3 python-pip oracle-java8-jdk build-essential python-dev swig
 sudo pip install pyro4
 
 # Install mjpg-streamer
@@ -17,7 +17,9 @@ echo "Installing WS2812B Python Driver"
 cd -
 git clone https://github.com/popoklopsi/rpi_ws281x.git
 cd rpi_ws281x 
-sudo scons
+scons
+cd python
+sudo python setup.py install
 
 # Make shell scripts executable
 cd -
