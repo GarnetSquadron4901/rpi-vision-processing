@@ -9,7 +9,6 @@ sudo pip install pyro
 
 # Install mjpg-streamer
 echo "Installing mjpg-streamer"
-cd vision
 git clone https://github.com/jacksonliam/mjpg-streamer.git
 cd mjpg-streamer/mjpg-streamer-experimental
 sudo make clean
@@ -17,13 +16,13 @@ sudo make install
 
 # Install WS2812B Python Driver
 echo "Installing WS2812B Python Driver"
-cd ../../..
+cd -
 git clone https://github.com/popoklopsi/rpi_ws281x.git
 cd rpi_ws281x 
 sudo scons
 
 # Make shell scripts executable
-cd ..
+cd -
 chmod 755 *.sh
 
 
