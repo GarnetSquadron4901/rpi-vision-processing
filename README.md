@@ -7,7 +7,7 @@ sudo apt-get update
 
 sudo apt-get install subversion
 
-svn co https://github.com/GarnetSquardon4901/rpi-vision-processing.git
+svn co https://github.com/GarnetSquardon4901/rpi-vision-processing.git/trunk/ ~/
 
 cd rpi-vision-processing.git/trunk
 
