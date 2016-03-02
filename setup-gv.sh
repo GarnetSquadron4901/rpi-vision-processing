@@ -11,7 +11,7 @@ sudo pip install pyro
 echo "Installing mjpg-streamer"
 git clone https://github.com/jacksonliam/mjpg-streamer.git
 cd mjpg-streamer/mjpg-streamer-experimental
-sudo make clean
+make clean all
 sudo make install
 
 # Install WS2812B Python Driver
