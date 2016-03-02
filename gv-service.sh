@@ -1,4 +1,5 @@
 if sudo ps | grep pyro4-ns; then
+	echo Garnet Vision process already running. Aborting.
 	exit
 fi
 

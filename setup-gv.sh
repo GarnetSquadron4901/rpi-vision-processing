@@ -3,7 +3,7 @@
 # Get dependacies
 echo "Installing dependancies..."
 sudo apt-get install htop scons cmake libjpeg8-dev python3 python-pip oracle-java8-jdk build-essential python-dev swig
-sudo pip install pyro4 pynetworktables
+sudo pip install pyro4 pynetworktables psutil
 
 # Install mjpg-streamer
 echo "Installing mjpg-streamer"
