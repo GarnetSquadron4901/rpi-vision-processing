@@ -26,8 +26,10 @@ sudo python setup.py install
 cd ~/
 chmod 755 *.sh
 
-if !(cat ~/.profile | grep gv-service.sh); then
-    echo "~/gv-service.sh &" >> ~/.profile
+if (cat ~/.profile | grep gv-service.sh); then
+	echo "gv-service already added to user profile login script."
+else    
+	echo "~/gv-service.sh &" >> ~/.profile
 fi
 
 
