@@ -4,7 +4,6 @@ sudo apt-get install htop scons cmake libjpeg8-dev python-pip oracle-java8-jdk
 sudo pip install pyro
 
 # Install mjpg-streamer
-mkdir vision
 cd vision
 git clone https://github.com/jacksonliam/mjpg-streamer.git
 cd mjpg-streamer/mjpg-streamer-experimental
