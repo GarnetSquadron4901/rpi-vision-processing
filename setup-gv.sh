@@ -26,6 +26,7 @@ sudo python setup.py install
 cd ~/
 chmod 755 *.sh
 
-echo ./gv-service.py ~/.profile
+echo "./gv-service.py &" >> ~/.profile
+
 
 
