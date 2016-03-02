@@ -2,8 +2,8 @@
 
 # Get dependacies
 echo "Installing dependancies..."
-sudo apt-get install htop scons cmake libjpeg8-dev python-pip oracle-java8-jdk
-sudo pip install pyro
+sudo apt-get install htop scons cmake libjpeg8-dev python3 python-pip oracle-java8-jdk
+sudo pip install pyro4
 
 # Install mjpg-streamer
 echo "Installing mjpg-streamer"
