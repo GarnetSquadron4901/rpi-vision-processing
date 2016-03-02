@@ -22,7 +22,8 @@ sudo raspi-config
 4. International Options -> Change Keyboard Layout -> Generic 105-key (Intl) PC -> Other -> English (US) -> English (US) -> The default for the keyboard layout -> No compose key
 5. Enable Camera -> Enable
 6. Overclock -> High
-7. Finish -> Reboot? Yes
+7. (Optional, but recommended) Change the password.
+8. Finish -> Reboot? Yes
 
 # Vision Processing Setup Steps
 1. sudo apt-get update
