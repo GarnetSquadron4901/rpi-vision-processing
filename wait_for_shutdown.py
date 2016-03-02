@@ -30,7 +30,7 @@ sd.putBoolean('RaspberryPiRunCommand', run)
 
 while run:
     try:
-        run = sd.getNumber('robotTime'))
+        run = sd.getNumber('robotTime')
 		sd.getBoolean('RaspberryPiRunCommand', defaultValue=True)
 		print 'RoboRIO Connected'
 	except KeyError:
