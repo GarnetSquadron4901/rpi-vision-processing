@@ -31,19 +31,19 @@ sd.putBoolean('RaspberryPiRunCommand', run)
 while run:
     try:
         run = sd.getNumber('robotTime')
-		sd.getBoolean('RaspberryPiRunCommand', defaultValue=True)
-		print 'RoboRIO Connected'
-	except KeyError:
+        sd.getBoolean('RaspberryPiRunCommand', defaultValue=True)
+        print 'RoboRIO Connected'
+    except KeyError:
         print 'RoboRIO Disconnected'\
-		
-	try:
-		coreUtilization = psutil.cpu_percent(interval=1, percpu=True)
-		for coreNum in range(len(coreUtilzation)):
-			sd.putNumber('/RPi/CPU Utilization/Core {}'.format(coreNum), coreUtilization[coreNum])
-		sd.putNumber('/RPi/Memory/Total', psutil.virtual_memory().total)
-		sd.putNumber('/RPi/Memory/Available', psutil.virtual_memory().available)
-		sd.putNumber('/RPi/Disk/Total', psutil.disk_usage('/').total)
-		sd.putNumber('/RPi/Disk/Available', psutil.disk_usage('/').available)
-	except:
-		pass
+        
+    try:
+        coreUtilization = psutil.cpu_percent(interval=1, percpu=True)
+        for coreNum in range(len(coreUtilzation)):
+            sd.putNumber('/RPi/CPU Utilization/Core {}'.format(coreNum), coreUtilization[coreNum])
+        sd.putNumber('/RPi/Memory/Total', psutil.virtual_memory().total)
+        sd.putNumber('/RPi/Memory/Available', psutil.virtual_memory().available)
+        sd.putNumber('/RPi/Disk/Total', psutil.disk_usage('/').total)
+        sd.putNumber('/RPi/Disk/Available', psutil.disk_usage('/').available)
+    except:
+        pass
     
