@@ -1,4 +1,4 @@
-if sudo ps | grep pyro4-ns then
+if sudo ps | grep pyro4-ns; then
 	exit
 fi
 
