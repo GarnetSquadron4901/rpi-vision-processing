@@ -9,11 +9,12 @@ Download from https://www.raspberrypi.org/downloads/raspbian/
 Install using directions found here: https://www.raspberrypi.org/documentation/installation/installing-images/windows.md
 
 # First Boot
-Username:pi
+* Username:pi
+* Password:raspberry
 
-Password:raspberry
 # Raspberry Pi Configuration
-Run: sudo raspi-config
+## Start raspi-config
+sudo raspi-config
 ## Configuration Steps
 1. Expand Filesystem
 2. Boot Options -> B2 - Console Autologin
