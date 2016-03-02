@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # Get dependacies
-echo "Updating apt-get..."
-sudo apt-get update
 echo "Installing dependancies..."
 sudo apt-get install htop scons cmake libjpeg8-dev python-pip oracle-java8-jdk
 sudo pip install pyro
