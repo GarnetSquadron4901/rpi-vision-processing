@@ -26,7 +26,9 @@ sudo python setup.py install
 cd ~/
 chmod 755 *.sh
 
-echo "~/gv-service.sh &" >> ~/.profile
+if !(cat ~/.profile | grep gv-service.sh); then
+    echo "~/gv-service.sh &" >> ~/.profile
+fi
 
 
 
