@@ -3,22 +3,27 @@ rpi-vision-processing
 
 Garnet Squadron 4901 Vision Processing for the Raspberry Pi 2 using GRIP, WS2812B LEDs and the Raspberry Pi Camera
 
-## Steps:
-Install Raspbian Jessie Lite onto Micro-SD Card.
-Login: Username:pi; Password:raspberry
-## Raspberry Pi Configuration
+## Install Raspbian Jessie Lite onto Micro-SD Card
+Download from https://www.raspberrypi.org/downloads/raspbian/
 
+Install using directions found here: https://www.raspberrypi.org/documentation/installation/installing-images/windows.md
 
-* Run sudo raspi-config
-* Expand Filesystem
-* Boot Options -> B2 - Console Autologin
-* Wait for Network at Boot -> Fast Boot without waiting for network connection
-* International Options -> Change Keyboard Layout -> Generic 105-key (Intl) PC -> Other -> English (US) -> English (US) -> The default for the keyboard layout -> No compose key
-* Enable Camera -> Enable
-* Overlock -> High
-* Finish -> Reboot? Yes
+# First Boot
+Username:pi
 
+Password:raspberry
+# Raspberry Pi Configuration
+Run: sudo raspi-config
+## Configuration Steps
+1. Expand Filesystem
+2. Boot Options -> B2 - Console Autologin
+3. Wait for Network at Boot -> Fast Boot without waiting for network connection
+4. International Options -> Change Keyboard Layout -> Generic 105-key (Intl) PC -> Other -> English (US) -> English (US) -> The default for the keyboard layout -> No compose key
+5. Enable Camera -> Enable
+6. Overclock -> High
+7. Finish -> Reboot? Yes
 
+# Vision Processing Setup Steps
 1. sudo apt-get update
 2. sudo apt-get upgrade
 3. sudo apt-get install subversion rpi-update
