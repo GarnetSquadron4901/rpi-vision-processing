@@ -1,2 +1,2 @@
 sudo pyro4-ns &
-sudo python ./leds/led_service.py &
+sudo python /home/pi/leds/led_service.py &
