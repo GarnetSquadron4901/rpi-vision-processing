@@ -2,7 +2,7 @@ if sudo ps | grep pyro4-ns; then
 	exit
 fi
 
-./start_all.sh
+./start_all.sh &
 
 python wait_for_shutdown.py
 
