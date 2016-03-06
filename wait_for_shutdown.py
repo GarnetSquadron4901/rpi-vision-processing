@@ -11,39 +11,42 @@
 import sys
 import time
 from networktables import NetworkTable
+import networktables.util
+import networktables2
 import psutil
 
 # To see messages from networktables, you must setup logging
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
-ip = 'roborio-4901-frc.local'
-
-NetworkTable.setIPAddress(ip)
+NetworkTable.setIPAddress('roborio-4901-frc.local')
 NetworkTable.setClientMode()
 NetworkTable.initialize()
 
-run = True
+cpu_utilization_type = networktables2.type.NumberArray()
 
-sd = NetworkTable.getTable("SmartDashboard")
-sd.putBoolean('RaspberryPiRunCommand', run)
+for core in range(psutil.cpu_count()):
+    cpu_utilization_type.append(0)
+
+# Setup variables
+run =             networktables.util.ntproperty('/RPi/RunCommand', True, writeDefault = True)
+cpu_utilization = networktables.util.ntproperty('/RPi/CPU Utilization/Cores', cpu_utilization_type, writeDefault = True)
+ram_total =       networktables.util.ntproperty('/RPi/Memory/Total', 0, writeDefault = True)
+ram_available =   networktables.util.ntproperty('/RPi/Memory/Available', 0, writeDefault = True)
+disk_total =      networktables.util.ntproperty('/RPi/Disk/Total', 0, writeDefault = True)
+disk_available =  networktables.util.ntproperty('/RPi/Disk/Available', 0, writeDefault = True)
 
 while run:
     try:
-        run = sd.getNumber('robotTime')
-        sd.getBoolean('RaspberryPiRunCommand', defaultValue=True)
-        print 'RoboRIO Connected'
-    except KeyError:
-        print 'RoboRIO Disconnected'\
-        
-    try:
-        coreUtilization = psutil.cpu_percent(interval=1, percpu=True)
-        for coreNum in range(len(coreUtilzation)):
-            sd.putNumber('/RPi/CPU Utilization/Core {}'.format(coreNum), coreUtilization[coreNum])
-        sd.putNumber('/RPi/Memory/Total', psutil.virtual_memory().total)
-        sd.putNumber('/RPi/Memory/Available', psutil.virtual_memory().available)
-        sd.putNumber('/RPi/Disk/Total', psutil.disk_usage('/').total)
-        sd.putNumber('/RPi/Disk/Available', psutil.disk_usage('/').available)
-    except:
-        pass
-    
+        cpu_utilization = psutil.cpu_percent(interval=1, percpu=True)
+        ram_total = psutil.virtual_memory().total
+        ram_available = psutil.virtual_memory().available
+        disk_total = psutil.disk_usage('/').total
+        disk_available = psutil.disk_usage('/').free
+    except KeyboardInterrupt:
+        exit()
+    except Exception as e:
+        print (e)
+    time.sleep(0.2)
+
+   
