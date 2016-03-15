@@ -34,5 +34,5 @@ sudo raspi-config
 6. svn co https://github.com/GarnetSquardon4901/rpi-vision-processing.git/trunk/ ~/
 7. chmod 755 setup-gv.sh
 8. ./setup-gv.sh
-9. Deploy GRIP to /home/pi/vision/grip
+9. At this point, you can deploy GRIP to /home/pi/vision/grip using GRIP on your computer.
 10. sudo reboot
