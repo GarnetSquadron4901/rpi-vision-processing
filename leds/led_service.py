@@ -86,6 +86,9 @@ class LED_Server(object):
 	def setError(self):
 		self.error = True
 		
+	def clearError(self):
+		self.error = False
+		
 	def leds_off(self):
 		for led in range(LED_COUNT):
 			self.strip.setPixelColor(led, Color(0, 0, 0))

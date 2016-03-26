@@ -3,7 +3,9 @@ if (ps -a | grep pyro4-ns) || (ps -a | grep mjpg-streamer) || (ps -a | grep java
 	exit
 fi
 
-./start_all.sh &
+./start_all.sh
+
+./gv-service-mon.sh &
 
 python wait_for_shutdown.py
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-while [1]
+while true
 do
 	if ((ps -a | grep mjpg_streamer) && (ps -a | grep java)); then 
-		echo good 
+		python ~/leds/clear_error.py
 	else 
-		echo bad
+		python ~/leds/set_error.py
 	fi
 	sleep 1
 
