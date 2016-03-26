@@ -96,7 +96,7 @@ class LED_Server(object):
 		while self.run == True:
 			if self.error:
 				for led in range(LED_COUNT):
-						self.strip.setPixelColor(led, Color(self.errorColorR, self.errorColorG, self.errorColorB))
+						self.strip.setPixelColor(led, Color(self.errorColorG, self.errorColorR, self.errorColorB))
 				self.strip.show()
 				time.sleep(0.5)
 			
@@ -111,17 +111,17 @@ class LED_Server(object):
 						i += 1
 						
 					for led in range (completed):
-						self.strip.setPixelColor(led, Color(self.completedColorR, self.completedColorG, self.completedColorB))
+						self.strip.setPixelColor(led, Color(self.completedColorG, self.completedColorR, self.completedColorB))
 					for led in range(completed, LED_COUNT):
 						gain = (math.sin((i / 100.0) * 6.28 ) + 1.0) / 2.0
-						self.strip.setPixelColor(led, Color(int(self.loadingColorR * gain), int(self.loadingColorG * gain), int(self.loadingColorB * gain)))
+						self.strip.setPixelColor(led, Color(int(self.loadingColorG * gain), int(self.loadingColorR * gain), int(self.loadingColorB * gain)))
 					self.strip.show()
 					time.sleep(0.01)
 				
 				else:
 					
 					for led in range(LED_COUNT):
-						self.strip.setPixelColor(led, Color(self.runningColorR, self.runningColorG, self.runningColorB))
+						self.strip.setPixelColor(led, Color(self.runningColorG, self.runningColorR, self.runningColorB))
 					self.strip.show()
 					time.sleep(0.5)
 
