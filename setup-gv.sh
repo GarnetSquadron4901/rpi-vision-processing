@@ -16,7 +16,8 @@ sudo make install
 # Install WS2812B Python Driver
 echo "Installing WS2812B Python Driver"
 cd ~/
-git clone https://github.com/popoklopsi/rpi_ws281x.git
+# git clone https://github.com/popoklopsi/rpi_ws281x.git
+git clone https://github.com/jgarff/rpi_ws281x.git
 cd rpi_ws281x 
 scons
 cd python

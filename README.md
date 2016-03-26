@@ -12,20 +12,20 @@ Install using directions found here: https://www.raspberrypi.org/documentation/i
 * Username:pi
 * Password:raspberry
 
-# Raspberry Pi Configuration
-## Start raspi-config
+## Raspberry Pi Configuration
+###  Start raspi-config ###
 sudo raspi-config
-## Configuration Steps
+### Configuration Steps
+
 1. Expand Filesystem
 2. Boot Options -> B2 - Console Autologin
 3. Wait for Network at Boot -> Fast Boot without waiting for network connection
 4. International Options -> Change Keyboard Layout -> Generic 105-key (Intl) PC -> Other -> English (US) -> English (US) -> The default for the keyboard layout -> No compose key
 5. Enable Camera -> Enable
-6. Overclock -> High
-7. (Optional, but recommended) Change the password.
-8. Finish -> Reboot? Yes
+6. (Optional, but recommended) Change the password.
+7. Finish -> Reboot? Yes
 
-# Vision Processing Setup Steps
+## Vision Processing Setup Steps
 1. sudo apt-get update
 2. sudo apt-get upgrade
 3. sudo apt-get install subversion rpi-update
