@@ -22,27 +22,18 @@ logging.basicConfig(level=logging.DEBUG)
 NetworkTable.setIPAddress('roborio-4901-frc.local')
 NetworkTable.setClientMode()
 NetworkTable.initialize()
+    
+rpi = NetworkTable.getTable('RPi')
+rpi.putBoolean('run', True)
 
-cpu_utilization_type = networktables2.type.NumberArray()
-
-for core in range(psutil.cpu_count()):
-    cpu_utilization_type.append(0)
-
-# Setup variables
-run =             networktables.util.ntproperty('/RPi/RunCommand', True, writeDefault = True)
-cpu_utilization = networktables.util.ntproperty('/RPi/CPU Utilization/Cores', cpu_utilization_type, writeDefault = True)
-ram_total =       networktables.util.ntproperty('/RPi/Memory/Total', 0, writeDefault = True)
-ram_available =   networktables.util.ntproperty('/RPi/Memory/Available', 0, writeDefault = True)
-disk_total =      networktables.util.ntproperty('/RPi/Disk/Total', 0, writeDefault = True)
-disk_available =  networktables.util.ntproperty('/RPi/Disk/Available', 0, writeDefault = True)
-
-while run:
+while rpi.getBoolean('run'):
     try:
-        cpu_utilization = psutil.cpu_percent(interval=1, percpu=True)
-        ram_total = psutil.virtual_memory().total
-        ram_available = psutil.virtual_memory().available
-        disk_total = psutil.disk_usage('/').total
-        disk_available = psutil.disk_usage('/').free
+        for cpu in range(psutil.cpu_count()):
+            rpi.putNumber('cpu'+str(cpu), psutil.cpu_percent(interval=1, percpu=True)[cpu])
+        rpi.putNumber('ram_total', psutil.virtual_memory().total)
+        rpi.putNumber('ram_available', psutil.virtual_memory().available)
+        rpi.putNumber('disk_total', psutil.disk_usage('/').total)
+        rpi.putNumber('disk_available', psutil.disk_usage('/').free)
     except KeyboardInterrupt:
         exit()
     except Exception as e:

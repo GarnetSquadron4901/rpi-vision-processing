@@ -1,6 +1,5 @@
 
-# Turn LEDs blue indicating that the process is starting
-. /home/pi/start_led.sh
+
 
 # Set LED parameters
 python /home/pi/leds/set_error_color.py 255 0 0

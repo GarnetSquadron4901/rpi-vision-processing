@@ -3,11 +3,14 @@ if (ps -a | grep pyro4-ns) || (ps -a | grep mjpg-streamer) || (ps -a | grep java
 	exit
 fi
 
+# Turn LEDs blue indicating that the process is starting
+. /home/pi/start_led.sh
+
 ./start_all.sh
 
 ./gv-service-mon.sh &
 
-python wait_for_shutdown.py
+python3 wait_for_shutdown.py
 
 ./stop_all.sh
 sudo poweroff
