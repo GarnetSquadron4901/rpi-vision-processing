@@ -14,6 +14,8 @@ while ! sudo ping -c 1 -n roborio-4901-frc.local; do sleep 1; done
 
 sleep 5
 
+python3 /home/pi/set_running_false.py
+
 python /home/pi/leds/set_progress.py 33
 
 # Start mjpg_streamer

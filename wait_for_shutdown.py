@@ -8,11 +8,8 @@
 # value should be visible to other networktables clients and the robot.
 #
 
-import sys
 import time
 from networktables import NetworkTable
-import networktables.util
-import networktables2
 import psutil
 
 # To see messages from networktables, you must setup logging
@@ -27,14 +24,15 @@ rpi = NetworkTable.getTable('RPi')
 
 rpi.putBoolean('run', True)
 while rpi.getBoolean('run') == False:
-	rpi.putBoolean('run', True)
-	time.sleep(5)
-	
+    rpi.putBoolean('run', True)
+    time.sleep(5)
 
 while rpi.getBoolean('run'):
     try:
+        rpi.putBoolean('running', True)
+        cpu_utilization = psutil.cpu_percent(interval=1, percpu=True)
         for cpu in range(psutil.cpu_count()):
-            rpi.putNumber('cpu'+str(cpu), psutil.cpu_percent(interval=1, percpu=True)[cpu])
+            rpi.putNumber('cpu'+str(cpu), cpu_utilization[cpu])
         rpi.putNumber('ram_total', psutil.virtual_memory().total)
         rpi.putNumber('ram_available', psutil.virtual_memory().available)
         rpi.putNumber('disk_total', psutil.disk_usage('/').total)
@@ -43,8 +41,11 @@ while rpi.getBoolean('run'):
         exit()
     except Exception as e:
         print (e)
-    time.sleep(0.2)
-	
+    time.sleep(0.1)
+    
+rpi.putBoolean('running', False)
+time.sleep(1)
+    
 
 
    
