@@ -24,7 +24,12 @@ NetworkTable.setClientMode()
 NetworkTable.initialize()
     
 rpi = NetworkTable.getTable('RPi')
+
 rpi.putBoolean('run', True)
+while rpi.getBoolean('run') == False:
+	rpi.putBoolean('run', True)
+	time.sleep(5)
+	
 
 while rpi.getBoolean('run'):
     try:
@@ -39,5 +44,7 @@ while rpi.getBoolean('run'):
     except Exception as e:
         print (e)
     time.sleep(0.2)
+	
+
 
    
